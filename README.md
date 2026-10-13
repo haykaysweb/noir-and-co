@@ -2,7 +2,7 @@
 
 An online store for clothes, bags and watches. I built it to learn Next.js, and I kept going until it covered the parts of a shop that matter: browsing, a cart, checkout, and a real database behind the forms.
 
-**Live demo:** [noir-and-co.vercel.app](https://noir-and-co.vercel.app)
+**Live demo:** [noir-and-co-store.vercel.app](https://noir-and-co-store.vercel.app)
 
 ![Home page](./screenshots/home.png)
 ![Shop page with filters applied](./screenshots/shop.png)
