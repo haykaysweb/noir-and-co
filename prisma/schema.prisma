@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  SHIPPED
+  CANCELLED
+}
+
+// One row per order. Prices are whole dollars, like the rest of the store.
+model Order {
+  id          String      @id @default(cuid())
+  orderNumber String      @unique
+  status      OrderStatus @default(PENDING)
+
+  email      String
+  firstName  String
+  lastName   String
+  address    String
+  city       String
+  postalCode String
+  country    String
+
+  subtotal Int
+  shipping Int
+  total    Int
+
+  items     OrderItem[] // One order has many items.
+  createdAt DateTime    @default(now())
+
+  @@map("orders")
+}
+
+// One row per product line in an order. This is the "many" side of the relation:
+// each item points back to its order through orderId.
+// We copy the product name and price at the moment of purchase, so old orders
+// stay correct even if the catalog changes later.
+model OrderItem {
+  id      String @id @default(cuid())
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  productId   String
+  productName String
+  size        String
+  color       String
+  unitPrice   Int
+  quantity    Int
+
+  @@index([orderId])
+  @@map("order_items")
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  createdAt DateTime @default(now())
+
+  @@map("contact_messages")
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+
+  @@map("newsletter_subscribers")
+}

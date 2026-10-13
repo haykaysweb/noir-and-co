@@ -1,26 +1,109 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+  ==========================================================================
+  DESIGN TOKENS
+  ==========================================================================
+  Tailwind v4 reads everything inside @theme and generates utility classes
+  from it automatically. For example:
+    --color-sand-500  ->  bg-sand-500, text-sand-500, border-sand-500, ...
+    --animate-fade-in ->  animate-fade-in
+*/
+@theme {
+  /* Sand: the warm accent palette. sand-50 is also the page background. */
+  --color-sand-50: #fbf8f4;
+  --color-sand-100: #f5efe6;
+  --color-sand-200: #ebe0d0;
+  --color-sand-300: #dccbb2;
+  --color-sand-400: #c9b491;
+  --color-sand-500: #b89a6f;
+  --color-sand-600: #a0825a;
+  --color-sand-700: #826847;
+  --color-sand-800: #65513a;
+  --color-sand-900: #4a3b2c;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Ink: the neutral palette used for text, borders and dark buttons. */
+  --color-ink-50: #f7f7f7;
+  --color-ink-100: #eeeeee;
+  --color-ink-200: #d9d9d9;
+  --color-ink-300: #b8b8b8;
+  --color-ink-400: #8c8c8c;
+  --color-ink-500: #666666;
+  --color-ink-600: #4d4d4d;
+  --color-ink-700: #333333;
+  --color-ink-800: #1a1a1a;
+  --color-ink-900: #0d0d0d;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Success green, used for confirmations ("Added to cart", "Order placed"). */
+  --color-success: #2f7d4f;
+
+  /* Animations used by the drawers and overlays. */
+  --animate-fade-in: fade-in 0.4s ease-out;
+  --animate-slide-up: slide-up 0.4s ease-out;
+  --animate-slide-in-right: slide-in-right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-in-left: slide-in-left 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/*
+  Fonts are loaded with next/font in app/layout.tsx, which exposes them as the
+  CSS variables --font-inter and --font-playfair. "inline" tells Tailwind to
+  use those variables directly when it generates font-sans / font-serif.
+*/
+@theme inline {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+}
+
+@layer base {
+  body {
+    @apply bg-sand-50 font-sans text-ink-900 antialiased;
+  }
+}
+
+/* Hides the scrollbar but keeps scrolling (used by the category tabs). */
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
