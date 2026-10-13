@@ -82,7 +82,7 @@ You need Node.js 20.9 or newer and a PostgreSQL database. I used a free one from
 
 ```env
    DATABASE_URL="your_postgres_connection_string"
-   NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+   PUBLIC_SITE_URL="http://localhost:3000"
 ```
 
 3. Create the database tables:

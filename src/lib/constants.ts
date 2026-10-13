@@ -11,8 +11,8 @@ export const STORE_NAME = "NOIR & CO";
 export const STORE_TAGLINE =
   "Modern luxury essentials. Crafted with intention, designed to last.";
 
-// Set NEXT_PUBLIC_SITE_URL in .env.local. Used for SEO tags and the sitemap.
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+// Set PUBLIC_SITE_URL in .env.local. Used for SEO tags and the sitemap.
+export const SITE_URL = process.env.PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 // ---------------------------------------------------------------------------
 // Cart and shipping
