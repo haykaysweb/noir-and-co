@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 const CONTACT_DETAILS = [
   { icon: Mail, label: "Email", value: "hello@noirandco.com" },
-  { icon: Phone, label: "Phone", value: "+1 (212) 555-0140" },
-  { icon: MapPin, label: "Showroom", value: "12 Greene Street, New York, NY" },
+  { icon: Phone, label: "Phone", value: "+234 7061 555-987" },
+  { icon: MapPin, label: "Showroom", value: "12 Greene Street, Lagos, Nigeria" },
 ];
 
 const SHOWROOM_HOURS = [

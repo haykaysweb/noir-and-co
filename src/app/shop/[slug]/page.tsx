@@ -6,9 +6,13 @@ import ProductGrid from "@/components/product/ProductGrid";
 import ProductPurchasePanel from "@/components/product/ProductPurchasePanel";
 import Container from "@/components/ui/Container";
 import { products } from "@/data/products";
-import { FREE_SHIPPING_THRESHOLD, SITE_URL } from "@/lib/constants";
 import { formatPrice } from "@/lib/format";
 import { getProductBySlug, getRelatedProducts } from "@/lib/products";
+import {
+  CURRENCY_CODE,
+  FREE_SHIPPING_THRESHOLD,
+  SITE_URL,
+} from "@/lib/constants";
 
 // In Next.js 15 and newer, params is a Promise, so we await it.
 type ProductPageProps = {
@@ -24,7 +28,9 @@ export function generateStaticParams() {
 }
 
 /** Sets the page title, description and social-sharing tags for each product. */
-export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
   const { slug } = await params;
   const product = getProductBySlug(slug);
 
@@ -42,7 +48,10 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 }
 
 const TRUST_POINTS = [
-  { label: "Shipping", value: `Free over ${formatPrice(FREE_SHIPPING_THRESHOLD)}` },
+  {
+    label: "Shipping",
+    value: `Free over ${formatPrice(FREE_SHIPPING_THRESHOLD)}`,
+  },
   { label: "Returns", value: "30-day policy" },
   { label: "Authentic", value: "Guaranteed" },
 ];
@@ -66,7 +75,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     category: product.category,
     offers: {
       "@type": "Offer",
-      priceCurrency: "USD",
+      priceCurrency: CURRENCY_CODE,
       price: product.price,
       availability: "https://schema.org/InStock",
       url: `${SITE_URL}/shop/${product.slug}`,
@@ -77,7 +86,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <>
       {/* Breadcrumb */}
       <Container className="pt-6">
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-ink-400">
+        <nav
+          aria-label="Breadcrumb"
+          className="flex items-center gap-2 text-xs text-ink-400"
+        >
           <Link href="/" className="transition-colors hover:text-ink-700">
             Home
           </Link>
@@ -98,7 +110,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
           {/* key={product.id} makes React start fresh (selected photo, size, color,
               quantity) whenever you move from one product to another. */}
-          <ProductGallery key={product.id} images={product.images} productName={product.name} />
+          <ProductGallery
+            key={product.id}
+            images={product.images}
+            productName={product.name}
+          />
 
           <div className="lg:pt-4">
             <p className="mb-2 text-xs uppercase tracking-[0.2em] text-sand-600">
@@ -107,15 +123,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <h1 className="mb-3 font-serif text-3xl font-semibold text-ink-900 lg:text-4xl">
               {product.name}
             </h1>
-            <p className="mb-6 text-2xl font-semibold text-ink-800">{formatPrice(product.price)}</p>
-            <p className="mb-8 text-sm leading-relaxed text-ink-600">{product.description}</p>
+            <p className="mb-6 text-2xl font-semibold text-ink-800">
+              {formatPrice(product.price)}
+            </p>
+            <p className="mb-8 text-sm leading-relaxed text-ink-600">
+              {product.description}
+            </p>
 
             <ProductPurchasePanel key={product.id} product={product} />
 
             <dl className="grid grid-cols-3 gap-4 border-t border-ink-100 pt-6 text-center">
               {TRUST_POINTS.map((point) => (
                 <div key={point.label}>
-                  <dt className="mb-1 text-xs uppercase tracking-wider text-ink-400">{point.label}</dt>
+                  <dt className="mb-1 text-xs uppercase tracking-wider text-ink-400">
+                    {point.label}
+                  </dt>
                   <dd className="text-xs text-ink-700">{point.value}</dd>
                 </div>
               ))}

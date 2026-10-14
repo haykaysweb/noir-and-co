@@ -9,15 +9,15 @@ import type { Product } from "@/types/product";
  * that file needs to change when the data source does.
  */
 export const products: Product[] = [
-  // -------------------------------------------------------------------------
+
   // Clothing
-  // -------------------------------------------------------------------------
+
   {
     id: "c1",
     slug: "tailored-wool-coat",
     name: "Tailored Wool Coat",
     category: "Clothing",
-    price: 480,
+    price: 720000,
     image: pexelsImage(9428074),
     images: [
       pexelsImage(9428074),
@@ -39,7 +39,7 @@ export const products: Product[] = [
     slug: "silk-blouse",
     name: "Silk Blouse",
     category: "Clothing",
-    price: 220,
+    price: 330000,
     image: pexelsImage(25194063),
     images: [
       pexelsImage(25194063),
@@ -59,7 +59,7 @@ export const products: Product[] = [
     slug: "leather-trousers",
     name: "Leather Trousers",
     category: "Clothing",
-    price: 350,
+    price: 525000,
     image: pexelsImage(7205905),
     images: [
       pexelsImage(7205905),
@@ -79,7 +79,7 @@ export const products: Product[] = [
     slug: "cashmere-knit-sweater",
     name: "Cashmere Knit Sweater",
     category: "Clothing",
-    price: 290,
+    price: 435000,
     image: pexelsImage(19319832),
     images: [
       pexelsImage(19319832),
@@ -97,15 +97,15 @@ export const products: Product[] = [
     badge: "Bestseller",
   },
 
-  // -------------------------------------------------------------------------
+
   // Bags
-  // -------------------------------------------------------------------------
+
   {
     id: "b1",
     slug: "structured-leather-tote",
     name: "Structured Leather Tote",
     category: "Bags",
-    price: 590,
+    price: 885000,
     image: pexelsImage(8502484),
     images: [pexelsImage(8502484), pexelsImage(20380733), pexelsImage(6650009)],
     description:
@@ -122,7 +122,7 @@ export const products: Product[] = [
     slug: "chain-shoulder-bag",
     name: "Chain Shoulder Bag",
     category: "Bags",
-    price: 420,
+    price: 630000,
     image: pexelsImage(6650000),
     images: [pexelsImage(6650000), pexelsImage(6650023), pexelsImage(23223834)],
     description:
@@ -139,7 +139,7 @@ export const products: Product[] = [
     slug: "mini-crossbody",
     name: "Mini Crossbody",
     category: "Bags",
-    price: 310,
+    price: 465000,
     image: pexelsImage(20380733),
     images: [pexelsImage(20380733), pexelsImage(8502484), pexelsImage(6650003)],
     description:
@@ -155,7 +155,7 @@ export const products: Product[] = [
     slug: "quilted-evening-clutch",
     name: "Quilted Evening Clutch",
     category: "Bags",
-    price: 280,
+    price: 420000,
     image: pexelsImage(23223834),
     images: [
       pexelsImage(23223834),
@@ -172,15 +172,15 @@ export const products: Product[] = [
     badge: "Limited",
   },
 
-  // -------------------------------------------------------------------------
+
   // Watches
-  // -------------------------------------------------------------------------
+
   {
     id: "w1",
     slug: "automatic-steel-watch",
     name: "Automatic Steel Watch",
     category: "Watches",
-    price: 850,
+    price: 127500,
     image: pexelsImage(3766111),
     images: [pexelsImage(3766111), pexelsImage(8364556), pexelsImage(33511755)],
     description:
@@ -197,7 +197,7 @@ export const products: Product[] = [
     slug: "leather-strap-classic",
     name: "Leather Strap Classic",
     category: "Watches",
-    price: 520,
+    price: 780000,
     image: pexelsImage(1697218),
     images: [pexelsImage(1697218), pexelsImage(8364556), pexelsImage(3766111)],
     description:
@@ -214,7 +214,7 @@ export const products: Product[] = [
     slug: "all-black-minimal",
     name: "All-Black Minimal",
     category: "Watches",
-    price: 640,
+    price: 960000,
     image: pexelsImage(31049999),
     images: [
       pexelsImage(31049999),
@@ -231,7 +231,7 @@ export const products: Product[] = [
     slug: "gold-accent-heritage",
     name: "Gold Accent Heritage",
     category: "Watches",
-    price: 720,
+    price: 108000,
     image: pexelsImage(10436602),
     images: [
       pexelsImage(10436602),

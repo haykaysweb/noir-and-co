@@ -4,26 +4,24 @@
  * navigation) lives here instead of being scattered through components.
  */
 
-// ---------------------------------------------------------------------------
 // Brand
-// ---------------------------------------------------------------------------
 export const STORE_NAME = "NOIR & CO";
 export const STORE_TAGLINE =
   "Modern luxury essentials. Crafted with intention, designed to last.";
 
+// Currency
+export const CURRENCY_CODE = "NGN";
+export const CURRENCY_LOCALE = "en-NG";
+
 // Set NEXT_PUBLIC_SITE_URL in .env.local. Used for SEO tags and the sitemap.
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
-// ---------------------------------------------------------------------------
 // Cart and shipping
-// ---------------------------------------------------------------------------
-export const FREE_SHIPPING_THRESHOLD = 500;
-export const FLAT_SHIPPING_RATE = 25;
+export const FREE_SHIPPING_THRESHOLD = 1_000_000; // free shipping above ₦1,000,000
+export const FLAT_SHIPPING_RATE = 5_000; // otherwise ₦5,000
 export const MAX_QUANTITY_PER_ITEM = 10;
 
-// ---------------------------------------------------------------------------
 // Navigation
-// ---------------------------------------------------------------------------
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Shop", href: "/shop" },
@@ -31,9 +29,7 @@ export const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
-// ---------------------------------------------------------------------------
-// Shop page options
-// ---------------------------------------------------------------------------
+
 export const SORT_OPTIONS = [
   { value: "featured", label: "Featured" },
   { value: "price-asc", label: "Price: Low to High" },
@@ -45,9 +41,9 @@ export type SortValue = (typeof SORT_OPTIONS)[number]["value"];
 
 export const PRICE_RANGES = [
   { id: "all", label: "Any price", min: 0, max: Infinity },
-  { id: "under-300", label: "Under $300", min: 0, max: 299 },
-  { id: "300-600", label: "$300 – $600", min: 300, max: 600 },
-  { id: "over-600", label: "Over $600", min: 601, max: Infinity },
+  { id: "under-400k", label: "Under ₦400,000", min: 0, max: 399_999 },
+  { id: "400k-800k", label: "₦400,000 – ₦800,000", min: 400_000, max: 800_000 },
+  { id: "over-800k", label: "Over ₦800,000", min: 800_001, max: Infinity },
 ] as const;
 
 export type PriceRangeId = (typeof PRICE_RANGES)[number]["id"];
@@ -66,10 +62,11 @@ export const SIZE_DISPLAY_ORDER: string[] = [
   "42mm",
 ];
 
-// ---------------------------------------------------------------------------
+
 // Checkout
-// ---------------------------------------------------------------------------
+
 export const SHIPPING_COUNTRIES = [
+  { code: "NG", name: "Nigeria" },
   { code: "US", name: "United States" },
   { code: "CA", name: "Canada" },
   { code: "UK", name: "United Kingdom" },
